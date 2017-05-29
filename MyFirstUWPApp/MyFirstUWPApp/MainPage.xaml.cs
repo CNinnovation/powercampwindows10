@@ -32,7 +32,35 @@ namespace MyFirstUWPApp
             gradientStops.Add(new GradientStop { Color = Colors.Red, Offset=1 });
             var myBrush = new LinearGradientBrush(gradientStops, 90);
 
+            Grid.SetRow(button1, 0);
+
             button1.Background = myBrush;
         }
+
+        public int Simple1 { get; set; }
+
+        private int simple2;
+
+        public int Simple2
+        {
+            get { return simple2; }
+            set { simple2 = value; }
+        }
+
+
+
+        public int MyDependency
+        {
+            get { return (int)GetValue(MyDependencyProperty); }
+            set { SetValue(MyDependencyProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MyDependency.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MyDependencyProperty =
+            DependencyProperty.Register("MyDependency", typeof(int), typeof(MainPage), new PropertyMetadata(0));
+
+
+
+
     }
 }

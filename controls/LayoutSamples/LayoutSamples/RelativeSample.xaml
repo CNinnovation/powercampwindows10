@@ -1,0 +1,21 @@
+﻿<Page
+    x:Class="LayoutSamples.RelativeSample"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:LayoutSamples"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <RelativePanel>
+            <Rectangle x:Name="r1" Width="200" Height="90" Fill="Yellow" />
+            <Rectangle x:Name="r2" RelativePanel.Below="r1" Width="200" Height="90" Fill="Red" />
+            <Rectangle x:Name="r3" RelativePanel.Below="r2" RelativePanel.AlignRightWithPanel="True" Width="200" Height="90" Fill="Black" />
+            <Rectangle x:Name="r4" Width="200" Height="90" Fill="Green" />
+            <Rectangle x:Name="r5" RelativePanel.AlignBottomWithPanel="True" Width="200" Height="90" Fill="Blue" />
+        </RelativePanel>
+
+    </Grid>
+</Page>
