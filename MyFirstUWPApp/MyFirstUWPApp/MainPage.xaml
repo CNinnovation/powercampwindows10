@@ -1,0 +1,32 @@
+﻿<Page
+    x:Class="MyFirstUWPApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MyFirstUWPApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Button x:Name="button1" Width="300" Height="90">
+
+
+            <ListBox>
+                <ListBox.Items>
+                    <Button>One</Button>
+                    <Button>Two</Button>
+                </ListBox.Items>
+            </ListBox>
+        </Button>
+        <Button Content="Button" HorizontalAlignment="Left" Width="300" Height="120" VerticalAlignment="Top">
+            <Button.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="Yellow" />
+                    <GradientStop Offset="0.5" Color="Orange" />
+                    <GradientStop Offset="1" Color="Red" />
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+    </Grid>
+</Page>
