@@ -1,5 +1,24 @@
 # Lab 1 - XAML Controls, Layouts
 
+## Preparation
+
+1. Register with GitHub
+2. Clone the course repository
+
+> git clone https://github.com/cninnovation/powercampwindows10
+
+3. In the downloaded source file structure, create a subdirectory, e.g. 'Christian'
+4. Create new projects in this source directory, and upload the files to the server
+
+> git add directoryname
+
+> git commit -m "message"
+
+> git push
+
+> git pull
+
+
 ## Layout Controls
 
 Arrange UI elements using different layout controls
