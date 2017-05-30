@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
+
     <Grid
         x:Name="ContentArea"
         Margin="12,0,12,0">
@@ -36,27 +37,37 @@
                         Orientation="Horizontal"
                         >
 
-                <TextBlock Width="100">DisplayMode:</TextBlock>
+                <TextBlock Width="100" VerticalAlignment="Center">DisplayMode:</TextBlock>
                 
-                <ComboBox>
-                    <ComboBoxItem>Inline</ComboBoxItem>
+                <ComboBox ItemsSource="{Binding DisplayModes}" 
+                          SelectedItem="{Binding SelectedDisplayMode, Mode=TwoWay}" 
+                          Width="200"
+                          VerticalAlignment="Center">
                 </ComboBox>
+
+                <Button Content="Toogle Pane Open" VerticalAlignment="Center" Style="{StaticResource btnStyle}" Command="{Binding ToogleIsPaneOpen, Mode=TwoWay}"/>
 
             </StackPanel>
             
             <SplitView Grid.Row="1"
-                       IsPaneOpen="True"
-                       DisplayMode="CompactInline"
+                       IsPaneOpen="{Binding IsPaneOpen, Mode=OneWay}"
+                       DisplayMode="{Binding DisplayMode, Mode=OneWay}"
                        OpenPaneLength="100"
-                       Background="Yellow"
+                       Background="LightBlue"
                        >
 
                 <SplitView.Pane>
-                    <TextBlock>This is the SplitView pane</TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock>Pane</TextBlock>
+                        <TextBlock Text="{Binding SelectedDisplayMode}"/>
+                    </StackPanel>
                 </SplitView.Pane>
 
                 <Grid>
-                    <TextBlock>This is the SplitView grid</TextBlock>
+                    <StackPanel Orientation="Vertical">
+                        <TextBlock>Grid</TextBlock>
+                        <TextBlock Text="{Binding SelectedDisplayMode}"/>
+                    </StackPanel>
                 </Grid>
             </SplitView>
 
