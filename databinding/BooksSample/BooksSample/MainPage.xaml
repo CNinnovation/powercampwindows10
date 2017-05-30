@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="BooksSample.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:BooksSample"
+    xmlns:utils="using:BooksSample.Utilities"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+        <utils:StringArrayToStringConverter x:Key="MyStringConverter" />
+        <DataTemplate x:Key="defaultBookTemplate">
+            <Border BorderBrush="LightBlue" BorderThickness="3">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding Title}" />
+                    <TextBlock Text="{Binding Publisher}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="wroxBookTemplate">
+            <Border BorderBrush="Red" BorderThickness="3">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding Title}" />
+                    <TextBlock Text="{Binding Publisher}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <utils:BookTemplateSelector x:Key="MyBookTemplateSelector" 
+                                    DefaultBookTemplate="{StaticResource defaultBookTemplate}" 
+                                    WroxBookTemplate="{StaticResource wroxBookTemplate}" />
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Slider x:Name="slider1" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Value="1" Minimum="0.4" Maximum="3" StepFrequency="0.1" SmallChange="0.1" />
+        <ListBox Grid.Row="1"
+                   ItemsSource="{Binding Books, Mode=OneWay}" 
+                 SelectedItem="{Binding SelectedBook, Mode=TwoWay}"
+                 ItemTemplateSelector="{StaticResource MyBookTemplateSelector}">
+        </ListBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="1" >
+            <StackPanel.RenderTransform>
+                <ScaleTransform ScaleX="{Binding ElementName=slider1, Path=Value}"
+                                ScaleY="{Binding ElementName=slider1, Path=Value}" />
+                
+            </StackPanel.RenderTransform>
+            <TextBox Text="{Binding SelectedBook.Title, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="{Binding SelectedBook.Publisher, Mode=OneWay}" />
+            <TextBlock Text="{Binding SelectedBook.Authors, Converter={StaticResource MyStringConverter}, ConverterParameter=', ', Mode=OneWay}" />
+            <Button Content="Change Book" Click="OnChangeBook" />
+            <Button Content="Add Book" Click="OnAddBook" />
+        </StackPanel>
+    </Grid>
+</Page>
