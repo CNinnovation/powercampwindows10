@@ -26,6 +26,40 @@
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal"
+                        >
+
+                <TextBlock Width="100">DisplayMode:</TextBlock>
+                
+                <ComboBox>
+                    <ComboBoxItem>Inline</ComboBoxItem>
+                </ComboBox>
+
+            </StackPanel>
+            
+            <SplitView Grid.Row="1"
+                       IsPaneOpen="True"
+                       DisplayMode="CompactInline"
+                       OpenPaneLength="100"
+                       Background="Yellow"
+                       >
+
+                <SplitView.Pane>
+                    <TextBlock>This is the SplitView pane</TextBlock>
+                </SplitView.Pane>
+
+                <Grid>
+                    <TextBlock>This is the SplitView grid</TextBlock>
+                </Grid>
+            </SplitView>
+
         </Grid>
     </Grid>
 </Page>
