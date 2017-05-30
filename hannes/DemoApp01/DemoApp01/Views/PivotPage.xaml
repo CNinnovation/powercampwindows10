@@ -1,0 +1,45 @@
+<Page
+    x:Class="DemoApp01.Views.PivotPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:model="using:DemoApp01.Models"
+    xmlns:views="using:DemoApp01.Views"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Pivot x:Uid="PivotPage">
+            <PivotItem x:Uid="PivotItem_Main">
+                <Frame>
+                    <views:MainPage/>
+                </Frame>
+            </PivotItem>
+            <PivotItem x:Uid="PivotItem_Page01">
+                <Frame>
+                    <views:Page01Page/>
+                </Frame>
+            </PivotItem>
+            <PivotItem x:Uid="PivotItem_Page02">
+                <Frame>
+                    <views:Page02Page/>
+                </Frame>
+            </PivotItem>
+            <PivotItem x:Uid="PivotItem_Page03">
+                <Frame>
+                    <views:Page03Page/>
+                </Frame>
+            </PivotItem>
+            <PivotItem x:Uid="PivotItem_Page04">
+                <Frame>
+                    <views:Page04Page/>
+                </Frame>
+            </PivotItem>
+            <PivotItem x:Uid="PivotItem_Page05">
+                <Frame>
+                    <views:Page05Page/>
+                </Frame>
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>
