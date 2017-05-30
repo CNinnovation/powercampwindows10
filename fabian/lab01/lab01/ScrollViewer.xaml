@@ -1,0 +1,25 @@
+﻿<Page
+    x:Class="lab01.ScrollViewer"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lab01"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer Margin="20">
+            <StackPanel Margin="50" VerticalAlignment="Top" HorizontalAlignment="Left">
+                <Rectangle Fill="Red" Width="250" Height="170" />
+                <Ellipse Fill="Green" Height="165" Width="200" />
+                <Polygon Fill="Blue" Points="0,0 200,0  100,200" />
+                <Rectangle Fill="Red" Width="250" Height="170" />
+                <Ellipse Fill="Green" Height="165" Width="200" />
+                <Polygon Fill="Blue" Points="0,0 200,0  100,200" />
+                <Rectangle Fill="Red" Width="250" Height="170" />
+                <Ellipse Fill="Green" Height="165" Width="200" />
+                <Polygon Fill="Blue" Points="0,0 200,0  100,200" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
