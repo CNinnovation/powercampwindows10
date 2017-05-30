@@ -1,7 +1,5 @@
 ﻿using BooksLib.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
 using TheCoolestMVVM;
 
 namespace BooksLib.Services
@@ -9,6 +7,7 @@ namespace BooksLib.Services
     public interface ISelectedBookService
     {
         Book SelectedBook { get; set; }
+        event PropertyChangedEventHandler PropertyChanged;
     }
     public class SelectedBookService : BindableBase, ISelectedBookService
     {
