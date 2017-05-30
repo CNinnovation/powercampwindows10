@@ -28,16 +28,16 @@ namespace UWP_Test
             this.InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new Windows.UI.Popups.MessageDialog("Oink Oink");
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
             var dialog = new Windows.UI.Popups.MessageDialog("Grunz Grunz");
-            dialog.ShowAsync();
+            await dialog.ShowAsync();
         }
     }
 }
