@@ -54,7 +54,7 @@ namespace LayoutSamples.Views
                     var textBlock = new TextBlock
                     {
                         Text = (i + 1).ToString(),
-                        HorizontalAlignment =HorizontalAlignment.Center,
+                        HorizontalAlignment = HorizontalAlignment.Center,
                         VerticalAlignment = VerticalAlignment.Center
                     };
                     var grid = new Grid();
@@ -66,8 +66,8 @@ namespace LayoutSamples.Views
             foreach (var item in items)
             {
                 grid1.Children.Add(item);
-                Rectangle rect = item.Children.First() as Rectangle;
-                if (rect.Width > 50)
+
+                if (item.Children.First() is Rectangle rect && rect.Width > 50)
                 {
                     int columnSpan = ((int)rect.Width / 50) + 1;
                     VariableSizedWrapGrid.SetColumnSpan(item, columnSpan);
@@ -75,7 +75,6 @@ namespace LayoutSamples.Views
                     VariableSizedWrapGrid.SetRowSpan(item, rowSpan);
                 }
             }
-
         }
     }
 }

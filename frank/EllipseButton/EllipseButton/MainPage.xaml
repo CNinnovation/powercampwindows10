@@ -9,7 +9,7 @@
     <Page.Resources>
         <Style x:Key="ElipseButton" TargetType="Button">
             <Setter Property="Height" Value="50" />
-            <Setter Property="Width" Value="360" />
+            <Setter Property="Width" Value="420" />
             <Setter Property="BorderBrush" Value="Aqua" />
             <Setter Property="Template">
                 <Setter.Value>

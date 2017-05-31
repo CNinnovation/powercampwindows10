@@ -1,0 +1,80 @@
+<Page
+    x:Class="DemoApp02Mvvm.Views.Page1Page"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        
+        <DataTemplate x:Key="dtDeveloperList">
+            <TextBlock Text="{Binding Name}"/>
+        </DataTemplate>
+
+    </Page.Resources>
+    <Grid
+        x:Name="ContentArea"
+        Margin="12,0,12,0">
+
+        <Grid.RowDefinitions>
+            <RowDefinition x:Name="TitleRow" Height="48"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Name="TitlePage"
+            x:Uid="Page1_Title"
+            Text="Navigation Item 2"
+            FontSize="28" FontWeight="SemiLight" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" VerticalAlignment="Center"
+            Margin="0,0,12,7"/>
+
+        <Grid 
+            Grid.Row="1" 
+            Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
+            <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
+                Place your content here.-->
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                
+                <ListBox Grid.Column="0" 
+                         ItemsSource="{x:Bind ViewModel.Developers, Mode=OneWay}" 
+                         ItemTemplate="{StaticResource dtDeveloperList}"
+                         SelectedItem="{x:Bind ViewModel.SelectedDeveloper, Mode=TwoWay}"
+                         />
+
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="{x:Bind ViewModel.SelectedDeveloper.Name, Mode=OneWay}"/>
+                    <TextBlock Text="{x:Bind ViewModel.SelectedDeveloper.EMail, Mode=OneWay}"/>
+                </StackPanel>
+
+            </Grid>
+
+        </Grid>
+    
+        <!--  Adaptive triggers  -->
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="WindowStates">
+                <VisualState x:Name="WideState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="640"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+                <VisualState x:Name="NarrowState">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="TitlePage.Margin" Value="48,0,12,7"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    </Grid>
+</Page>
