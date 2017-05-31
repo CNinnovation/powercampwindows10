@@ -26,6 +26,12 @@
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
+
+            <Grid>
+
+                <ProgressBar Minimum="0" Maximum="100" Value="{Binding ProgressValue}"/>
+                
+            </Grid>
         </Grid>
     </Grid>
 </Page>

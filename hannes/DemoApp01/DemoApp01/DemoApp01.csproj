@@ -106,11 +106,13 @@
   <ItemGroup>
     <Compile Include="Activation\ActivationHandler.cs" />
     <Compile Include="Converters\BirthdayConverter.cs" />
+    <Compile Include="Converters\ObjectObjectConverter.cs" />
     <Compile Include="Helpers\BindableBase.cs" />
     <Compile Include="Models\Developers.cs" />
     <Compile Include="Services\ActivationService.cs" />
     <Compile Include="Activation\DefaultLaunchActivationHandler.cs" />
     <Compile Include="Services\NavigationService.cs" />
+    <Compile Include="Utilities\TemplateSelectors.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>

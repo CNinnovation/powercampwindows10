@@ -41,5 +41,12 @@ namespace DemoApp01.Models
             get => _birthDay;
             set => SetProperty(ref _birthDay, value);
         }
+
+        private bool _developsCSharp;
+        public bool DevelopsCSharp
+        {
+            get => _developsCSharp;
+            set => SetProperty(ref _developsCSharp, value);
+        }
     }
 }

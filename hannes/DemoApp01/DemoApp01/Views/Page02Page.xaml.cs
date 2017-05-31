@@ -17,9 +17,12 @@ namespace DemoApp01.Views
 
             this.DataContext = this;
 
-            _developers.Add(new Developer() { Name = "Christian Nagel", EMail = "christian.nagel@cninnovation.com" });
-            _developers.Add(new Developer() { Name = "Johannes Maly", EMail = "johannes.maly@chello.at" });
+            DateTime dtNow = DateTime.Now;
 
+            _developers.Add(new Developer() { Name = "Christian Nagel", EMail = "christian.nagel@cninnovation.com", DevelopsCSharp = true });
+            _developers.Add(new Developer() { Name = "Johannes Maly", EMail = "johannes.maly@chello.at", BirthDay = dtNow });
+
+            NewDeveloper = new CommandHandler(new Action(DoNewDeveloper), true);
             AddDeveloper = new CommandHandler(new Action(DoAddDeveloper), true);
 
         }
@@ -45,7 +48,7 @@ namespace DemoApp01.Views
         public Developer SelectedDeveloper
         {
             get => _selectedDeveloper;
-            set => SetProperty(ref _selectedDeveloper, value );
+            set => SetProperty(ref _selectedDeveloper, value);
         }
 
         private ObservableCollection<Developer> _developers = new ObservableCollection<Developer>();
@@ -89,14 +92,14 @@ namespace DemoApp01.Views
         public ICommand AddDeveloper
         {
             get => _addDeveloper;
-            set => SetProperty( ref _addDeveloper, value );
+            set => SetProperty(ref _addDeveloper, value);
         }
 
         public async void DoAddDeveloper()
         {
-            if ( !string.IsNullOrWhiteSpace( DeveloperName ))
+            if (!string.IsNullOrWhiteSpace(DeveloperName))
             {
-                var d = new Developer() { Name=DeveloperName, EMail=DeveloperEMail, Password=DeveloperPassword, BirthDay=DeveloperBirthDay.Date };
+                var d = new Developer() { Name = DeveloperName, EMail = DeveloperEMail, Password = DeveloperPassword, BirthDay = DeveloperBirthDay.Date };
 
                 Developers.Add(d);
             }
@@ -105,6 +108,21 @@ namespace DemoApp01.Views
                 var mb = new MessageDialog("Please enter a developer name");
                 await mb.ShowAsync();
             }
+        }
+        private ICommand _newDeveloper;
+
+        public ICommand NewDeveloper
+        {
+            get => _newDeveloper;
+            set => SetProperty(ref _newDeveloper, value);
+        }
+
+        public void DoNewDeveloper()
+        {
+            DeveloperName = "";
+            DeveloperEMail = "";
+            DeveloperPassword = "";
+            DeveloperBirthDay = new DateTimeOffset( DateTime.Now );
         }
     }
 }

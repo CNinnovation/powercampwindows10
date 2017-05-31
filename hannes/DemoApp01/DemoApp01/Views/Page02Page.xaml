@@ -4,6 +4,8 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:DemoApp01.Models"
+    xmlns:utils="using:DemoApp01.Utilities"
     mc:Ignorable="d"
     xmlns:converters="using:DemoApp01.Converters"
     >
@@ -11,6 +13,28 @@
     <Page.Resources>
 
         <converters:BirthdayConverter x:Key="birthday2String"/>
+        <converters:ObjectToObjectConverter x:Key="o2o"/>
+
+        <DataTemplate  x:Key="dtCSharpDeveloper" x:DataType="models:Developer">
+            <Border BorderBrush="LightBlue" BorderThickness="3">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <DataTemplate x:Key="dtDefaultDeveloper" x:DataType="models:Developer">
+            <Border BorderBrush="Red" BorderThickness="3">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <utils:DeveloperTemplateSelector x:Key="tsDeveloperTemplateSelector" 
+                                    DefaultTemplate="{StaticResource dtDefaultDeveloper}" 
+                                    CSharpTemplate="{StaticResource dtCSharpDeveloper}" />
+
 
     </Page.Resources>
     
@@ -52,17 +76,17 @@
 
                     <StackPanel>
                         <TextBlock>Name:</TextBlock>
-                        <TextBox Text="{Binding DeveloperName, Mode=TwoWay}"></TextBox>
+                        <TextBox Text="{x:Bind DeveloperName, Mode=TwoWay}"></TextBox>
                     </StackPanel>
 
                     <StackPanel>
                         <TextBlock>E-Mail:</TextBlock>
-                        <TextBox Text="{Binding DeveloperEMail, Mode=TwoWay}"></TextBox>
+                        <TextBox Text="{x:Bind DeveloperEMail, Mode=TwoWay}"></TextBox>
                     </StackPanel>
 
                     <StackPanel>
                         <TextBlock>Password:</TextBlock>
-                        <PasswordBox Password="{Binding DeveloperPassword, Mode=TwoWay}"></PasswordBox>
+                        <PasswordBox Password="{x:Bind DeveloperPassword, Mode=TwoWay}"></PasswordBox>
                     </StackPanel>
 
                     <StackPanel>
@@ -74,7 +98,14 @@
                     
                     <StackPanel>
 
-                        <Button Content="Add developer" Command="{Binding AddDeveloper, Mode=TwoWay}"
+                        <Button Content="New developer" Command="{x:Bind NewDeveloper, Mode=TwoWay}"
+                                Style="{StaticResource stNewDeveloper}"
+                                Height="50"
+                                Width="200"
+                                HorizontalAlignment="Center">
+                        </Button>
+
+                        <Button Content="Add developer" Command="{x:Bind AddDeveloper, Mode=TwoWay}"
                                 Style="{StaticResource stAddDeveloper}"
                                 Height="50"
                                 Width="200"
@@ -87,21 +118,21 @@
 
                 </StackPanel>
 
-                <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{Binding Developers, Mode=OneWay}" SelectedItem="{Binding SelectedDeveloper, Mode=TwoWay}"
-                         ItemTemplate="{StaticResource dtDeveloperList}">
+                <ListBox Grid.Row="1" Grid.Column="0" ItemsSource="{x:Bind Developers, Mode=OneWay}" SelectedItem="{x:Bind SelectedDeveloper, Converter={StaticResource o2o}, Mode=TwoWay}"
+                         ItemTemplateSelector="{StaticResource tsDeveloperTemplateSelector}">
                 </ListBox>
 
                 <StackPanel Grid.Row="1" Grid.Column="1">
 
                     <RichTextBlock FontFamily="Arial" FontSize="24">
                         <Paragraph Margin="0,0,0,30" LineStackingStrategy="MaxHeight">
-                            <Run Text="{Binding SelectedDeveloper.Name}" />
+                            <Run Text="{x:Bind SelectedDeveloper.Name, Mode=OneWay}" />
                         </Paragraph>
                     </RichTextBlock>
-                    
-                    <TextBlock Text="{Binding SelectedDeveloper.EMail}"></TextBlock>
 
-                    <TextBlock Text="{Binding SelectedDeveloper.BirthDay, Converter={StaticResource birthday2String}}"></TextBlock>
+                    <TextBlock Text="{x:Bind SelectedDeveloper.EMail, Mode=OneWay}"></TextBlock>
+
+                    <TextBlock Text="{x:Bind SelectedDeveloper.BirthDay, Mode=OneWay, Converter={StaticResource birthday2String}}"></TextBlock>
 
                 </StackPanel>
                 

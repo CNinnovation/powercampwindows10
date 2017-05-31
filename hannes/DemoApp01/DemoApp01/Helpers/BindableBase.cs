@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DemoApp01.Helpers
 {
-    public class BindableBase : INotifyPropertyChanged
+    public abstract class BindableBase : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
