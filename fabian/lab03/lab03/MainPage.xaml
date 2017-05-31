@@ -7,7 +7,42 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <DataTemplate x:Key="templateGreen">
+            <Border BorderBrush="Green" BorderThickness="3">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding author}" />
+                    <TextBlock Text="{Binding title}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="templateRed">
+            <Border BorderBrush="Red" BorderThickness="3">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding author}" />
+                    <TextBlock Text="{Binding title}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
 
+        <local:TemplateSelector x:Key="selectbookTemplate" template1="{StaticResource templateGreen}" template2="{StaticResource templateRed}" />
+    </Page.Resources>
+    
+    
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="listbox1" Grid.Column="0" ItemsSource="{x:Bind bookList, Mode=OneWay}" SelectedItem="{x:Bind selectedBook, Mode=TwoWay}" ItemTemplateSelector="{StaticResource selectbookTemplate}">
+            
+        </ListBox>
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="{x:Bind selectedBook.author, Mode=OneWay}" />
+            <TextBlock Text="{x:Bind selectedBook.title, Mode=OneWay}" />
+        </StackPanel>
     </Grid>
 </Page>

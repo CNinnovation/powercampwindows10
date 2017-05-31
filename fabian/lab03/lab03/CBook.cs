@@ -8,15 +8,22 @@ namespace lab03
 {
     public class CBook : CBindableBase
     {
-        private string author;
+        private string _author;
 
-        public string Author
+        public string author
         {
-            get { return author; }
-            set { author = value; }
+            get { return _author; }
+            set { setProp(ref _author, value); }
         }
 
-        public string title { get; set; }
+        private string _title;
+
+        public string title
+        {
+            get { return _title; }
+            set { setProp(ref _title, value); }
+        }
+
 
         public CBook()
         {
