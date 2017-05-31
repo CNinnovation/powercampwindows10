@@ -25,6 +25,7 @@ namespace BooksSample.Views
         {
             this.InitializeComponent();
             ViewModel = (Application.Current as App).Container.GetService<BookDetailViewModel>();
+            this.DataContext = this;
         }
 
         public BookDetailViewModel ViewModel { get; }

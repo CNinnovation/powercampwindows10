@@ -4,10 +4,9 @@ using TheCoolestMVVM;
 
 namespace BooksLib.Services
 {
-    public interface ISelectedBookService
+    public interface ISelectedBookService : INotifyPropertyChanged
     {
         Book SelectedBook { get; set; }
-        event PropertyChangedEventHandler PropertyChanged;
     }
     public class SelectedBookService : BindableBase, ISelectedBookService
     {
