@@ -13,3 +13,5 @@ You can use models different from Book - any type you like - to create list and 
 7. Create DataTemplates to define the look of items in the ListBox
 8. Create and use a DataTemplateSelector for different item looks
 9. Use an ObservableCollection to change the list dynamically
+
+10. Change the binding to use compiled binding
