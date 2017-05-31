@@ -1,0 +1,48 @@
+﻿<Page
+    x:Class="lab03.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:lab03"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <DataTemplate x:Key="templateGreen">
+            <Border BorderBrush="Green" BorderThickness="3">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding author}" />
+                    <TextBlock Text="{Binding title}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+        <DataTemplate x:Key="templateRed">
+            <Border BorderBrush="Red" BorderThickness="3">
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="{Binding author}" />
+                    <TextBlock Text="{Binding title}" />
+                </StackPanel>
+            </Border>
+        </DataTemplate>
+
+        <local:TemplateSelector x:Key="selectbookTemplate" template1="{StaticResource templateGreen}" template2="{StaticResource templateRed}" />
+    </Page.Resources>
+    
+    
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+
+        <ListBox x:Name="listbox1" Grid.Column="0" ItemsSource="{x:Bind bookList, Mode=OneWay}" SelectedItem="{x:Bind selectedBook, Mode=TwoWay}" ItemTemplateSelector="{StaticResource selectbookTemplate}">
+            
+        </ListBox>
+
+        <StackPanel Grid.Column="1">
+            <TextBlock Text="{x:Bind selectedBook.author, Mode=OneWay}" />
+            <TextBlock Text="{x:Bind selectedBook.title, Mode=OneWay}" />
+        </StackPanel>
+    </Grid>
+</Page>
