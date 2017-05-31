@@ -12,7 +12,6 @@ namespace BooksSample.Views
         public BooksListView()
         {
             this.InitializeComponent();
-            //  ViewModel = new BooksListViewModel(new BooksService(), new UWPMessageDialog());
             ViewModel = (Application.Current as App).Container.GetService<BooksListViewModel>();
         }
 

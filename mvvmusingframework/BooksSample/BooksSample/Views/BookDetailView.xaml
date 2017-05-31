@@ -16,9 +16,9 @@
     <Grid>
         <StackPanel >
 
-            <TextBox Text="{x:Bind ViewModel.SelectedBookService.SelectedBook.Title, Mode=TwoWay}" />
-            <TextBlock Text="{x:Bind ViewModel.SelectedBookService.SelectedBook.Publisher, Mode=OneWay}" />
-            <TextBlock Text="{x:Bind ViewModel.SelectedBookService.SelectedBook.Authors, Mode=OneWay, Converter={StaticResource StringArrayToStringConverter}}" />
+            <TextBox Text="{x:Bind ViewModel.SelectedBook.Title, Mode=TwoWay}" />
+            <TextBlock Text="{x:Bind ViewModel.SelectedBook.Publisher, Mode=OneWay}" />
+            <TextBlock Text="{x:Bind ViewModel.SelectedBook.Authors, Mode=OneWay, Converter={StaticResource StringArrayToStringConverter}}" />
             <!--<Button Content="Change Book" Click="{x:Bind OnChangeBook}" />
             <Button Content="Add Book" Click="{x:Bind OnAddBook}" />-->
         </StackPanel>

@@ -2,6 +2,7 @@
 using BooksLib.ViewModels;
 using BooksSample.UWPServices;
 using Microsoft.Extensions.DependencyInjection;
+using Prism.Events;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -111,6 +112,7 @@ namespace BooksSample
             services.AddSingleton<ISelectedBookService, SelectedBookService>();
             services.AddTransient<BooksListViewModel>();
             services.AddTransient<BookDetailViewModel>();
+            services.AddSingleton<IEventAggregator, EventAggregator>();
             Container = services.BuildServiceProvider();
         }
 
