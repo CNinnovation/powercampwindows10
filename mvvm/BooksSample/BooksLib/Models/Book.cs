@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TheCoolestMVVM;
+﻿using TheCoolestMVVM;
 
 namespace BooksLib.Models
 {
@@ -25,8 +19,6 @@ namespace BooksLib.Models
             get => _publisher;
             set => SetProperty(ref _publisher, value);
         }
-
-
 
         public string[] Authors { get; set; }
     }

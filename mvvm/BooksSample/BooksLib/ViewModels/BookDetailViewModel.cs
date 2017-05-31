@@ -1,5 +1,4 @@
-﻿using BooksLib.Models;
-using BooksLib.Services;
+﻿using BooksLib.Services;
 using TheBestMVVMFrameworkInTown;
 
 namespace BooksLib.ViewModels
