@@ -107,7 +107,8 @@ namespace BooksSample
         {
             var services = new ServiceCollection();
             services.AddSingleton<IMessageService, UWPMessageDialog>();
-            services.AddSingleton<IBooksService, BooksService>();
+            // services.AddSingleton<IBooksService, BooksService>();
+            services.AddSingleton<IBooksService, HttpBooksService>();
             services.AddSingleton<ISelectedBookService, SelectedBookService>();
             services.AddTransient<BooksListViewModel>();
             services.AddTransient<BookDetailViewModel>();

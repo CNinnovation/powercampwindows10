@@ -1,5 +1,7 @@
 ﻿using BooksLib.Models;
 using System.Collections.Generic;
+using System;
+using System.Threading.Tasks;
 
 namespace BooksLib.Services
 {
@@ -15,6 +17,8 @@ namespace BooksLib.Services
                 
             };
 
-        public IEnumerable<Book> GetBooks() => _books;
+        public Task<Book> AddBookAsync(Book book) => throw new NotImplementedException();
+
+        public Task<IEnumerable<Book>> GetBooksAsync() => Task.FromResult<IEnumerable<Book>>(_books);
     }
 }

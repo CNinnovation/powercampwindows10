@@ -22,19 +22,26 @@ namespace BooksLib.ViewModels
             _selectedBookService = selectedBookService;
 
             ShowMessageCommand = new DelegateCommand(() => ShowMessage("command invoked"));
-
+            AddBookCommand = new DelegateCommand(AddTestBook);
             InitializeBooks();
         }
 
         public ICommand ShowMessageCommand { get; }
 
-        private void InitializeBooks()
+        public ICommand AddBookCommand { get; }
+
+        private async void InitializeBooks()
         {
-            var books = _booksService.GetBooks();
+            var books = await _booksService.GetBooksAsync();
             foreach (var book in books)
             {
                 _books.Add(book);
             }
+        }
+
+        public async void AddTestBook()
+        {
+            await _booksService.AddBookAsync(new Book { Title = "Professional C# 8.0", Publisher = "Wrox Press" });
         }
 
         public IEnumerable<Book> Books => _books;

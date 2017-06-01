@@ -4,6 +4,7 @@ using ServerBooksLib.Services;
 using System;
 using System.Linq;
 using ServerBooksLib.Models;
+using System.Data.SqlClient;
 
 namespace TestBooksDBLib
 {
@@ -17,6 +18,7 @@ namespace TestBooksDBLib
             // CreateRecords();
             // QueryDemo();
             UpdateDemo();
+
             Console.ReadLine();
         }
 
@@ -65,10 +67,19 @@ namespace TestBooksDBLib
         {
             const string ConnectionString = @"server=(localdb)\MSSQLLocalDb;database=Books;trusted_connection=true";
             var services = new ServiceCollection();
+
             services.AddDbContext<BooksContext>(options =>
                 options.UseSqlServer(ConnectionString));
 
+            services.AddDbContext<BooksContext>(MyDBOptions);
+
             Container = services.BuildServiceProvider();
+        }
+
+        static void MyDBOptions(DbContextOptionsBuilder builder)
+        {
+            const string ConnectionString = @"server=(localdb)\MSSQLLocalDb;database=Books;trusted_connection=true";
+            builder.UseSqlServer(ConnectionString);
         }
 
         public static IServiceProvider Container { get; private set; }
