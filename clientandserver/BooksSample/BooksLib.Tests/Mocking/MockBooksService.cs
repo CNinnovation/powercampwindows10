@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using BooksLib.Models;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace BooksLib.Tests.Mocking
 {
@@ -14,9 +15,11 @@ namespace BooksLib.Tests.Mocking
 
         }
 
-        private IEnumerable<Book>
-        public IEnumerable<Book> GetBooks() => Enumerable.Range(0, 5)
-            .Select(i => new Book { Title = $"title {i}", Publisher = $"publisher {i}" })
-            .ToList();
+        public Task<Book> AddBookAsync(Book book) => throw new NotImplementedException();
+        public Task<IEnumerable<Book>> GetBooksAsync() => Task.FromResult<IEnumerable<Book>>(
+            Enumerable.Range(0, 5)
+                .Select(i => new Book { Title = $"title {i}", Publisher = $"publisher {i}" })
+                .ToList());
+
     }
 }

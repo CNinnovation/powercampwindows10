@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using Xunit;
 
 namespace BooksLib.Tests.ViewModels
@@ -21,17 +22,19 @@ namespace BooksLib.Tests.ViewModels
         }
 
         [Fact]
-        public void TestBooks()
+        public async Task TestBooks()
         {
-            int expected = _booksService.GetBooks().Count();
+            int expected = (await _booksService.GetBooksAsync()).Count();
             int numberbooks = _booksListViewModel.Books.Count();
             Assert.Equal(expected, numberbooks);
         }
 
-        public void TestSelectedBook()
+        [Fact]
+        public async Task TestSelectedBook()
         {
-            Book expectedBook = _booksService.GetBooks().Skip(1).First();
-            _booksListViewModel.SelectedBook = 
+            Book selectBook = (await _booksService.GetBooksAsync()).Skip(1).First();
+            _booksListViewModel.SelectedBook = selectBook;
+            Assert.Equal(selectBook, _booksListViewModel.SelectedBook);
         }
     }
 }
