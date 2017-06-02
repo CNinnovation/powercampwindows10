@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using ViewModels.Events;
+using System.Threading.Tasks;
 
 namespace ViewModels
 {
@@ -15,11 +16,21 @@ namespace ViewModels
     {
         private IEventAggregator _ea;
 
-        public DeveloperListViewModel( IDeveloperService developerService, IEventAggregator ea )
-        {
-            _developers = new ObservableCollection<Developer>(developerService.GetDevelopers());
+        private IDeveloperService _developerService;
 
+        public DeveloperListViewModel(IDeveloperService developerService, IEventAggregator ea)
+        {
+            _developerService = developerService;
             _ea = ea;
+
+            Task.Run(() => this.GetDevelopersAsync()).Wait();
+        }
+
+        private async Task GetDevelopersAsync()
+        {
+            IEnumerable<Developer> devs = await _developerService.GetDevelopersAsync();
+
+            _developers = new ObservableCollection<Developer>( devs );
         }
 
         private ObservableCollection<Developer> _developers;
