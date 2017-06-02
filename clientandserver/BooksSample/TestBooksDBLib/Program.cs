@@ -15,9 +15,9 @@ namespace TestBooksDBLib
             RegisterServices();
 
             CreateADatabase();
-            // CreateRecords();
-            // QueryDemo();
-            UpdateDemo();
+            CreateRecords();
+            QueryDemo();
+            // UpdateDemo();
 
             Console.ReadLine();
         }
@@ -65,7 +65,8 @@ namespace TestBooksDBLib
 
         static void RegisterServices()
         {
-            const string ConnectionString = @"server=(localdb)\MSSQLLocalDb;database=Books;trusted_connection=true";
+            // const string ConnectionString = @"server=(localdb)\MSSQLLocalDb;database=Books;trusted_connection=true";
+            const string ConnectionString = @"Server=tcp:etcjun2017db.database.windows.net,1433;Initial Catalog=BooksDB;Persist Security Info=False;User ID=sqladmin;Password=Pa$$w0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
             var services = new ServiceCollection();
 
             services.AddDbContext<BooksContext>(options =>

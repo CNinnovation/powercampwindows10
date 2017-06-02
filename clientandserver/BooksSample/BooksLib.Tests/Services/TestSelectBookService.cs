@@ -33,7 +33,6 @@ namespace BooksLib.Tests.Services
             {
                 _selectedBookService.SelectedBook = b;
             });
-
         }
     }
 }
