@@ -8,8 +8,7 @@
 
     <Page.Resources>
         <ResourceDictionary>
-            <local:VisibilityConverter x:Key="visibilityConverter"/>
-            <x:String x:Name="Author">Wutz</x:String>
+
         </ResourceDictionary>
     </Page.Resources>
 
@@ -19,7 +18,7 @@
             <ListBox.ItemTemplate>
                     <DataTemplate>
                     <StackPanel>
-                        <TextBlock Text="Details" Visibility="{Binding IsSelected, Converter={StaticResource VisibilityConverter}}" />
+                        <TextBlock Text="Details" Visibility="{Binding IsSelected}" />
                       </StackPanel>
                     </DataTemplate>
                  </ListBox.ItemTemplate>
