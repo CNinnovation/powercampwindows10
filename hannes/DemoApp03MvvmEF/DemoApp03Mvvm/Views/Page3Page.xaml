@@ -26,6 +26,16 @@
             Background="{ThemeResource SystemControlPageBackgroundChromeLowBrush}">
             <!--The SystemControlPageBackgroundChromeLowBrush background represents where you should place your content. 
                 Place your content here.-->
+
+            <Grid>
+                <FlipView>
+                    <FlipViewItem Name="Flip1"/>
+                    <FlipViewItem Name="Flip2"/>
+                    <FlipViewItem Name="Flip3"/>
+                    <FlipViewItem Name="Flip4"/>
+                    <FlipViewItem Name="Flip5"/>
+                </FlipView>
+            </Grid>
         </Grid>
     
         <!--  Adaptive triggers  -->

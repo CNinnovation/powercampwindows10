@@ -10,6 +10,7 @@ namespace BooksLib.Services
 {
     public class HttpBooksService : IBooksService
     {
+        private const string booksUrl = "http://etcbooksservice.azurewebsites.net/api/Books";
         private HttpClient _client;
         public HttpBooksService()
         {
@@ -20,7 +21,7 @@ namespace BooksLib.Services
         {
             string json = JsonConvert.SerializeObject(book);
             HttpContent content = new StringContent(json, Encoding.UTF8, "application/json");
-            HttpResponseMessage resp = await _client.PostAsync("http://localhost:52663/api/Books", content);
+            HttpResponseMessage resp = await _client.PostAsync(booksUrl, content);
             resp.EnsureSuccessStatusCode();
             string resultjson = await resp.Content.ReadAsStringAsync();
 
@@ -29,7 +30,7 @@ namespace BooksLib.Services
 
         public async Task<IEnumerable<Book>> GetBooksAsync()
         {
-            HttpResponseMessage resp = await _client.GetAsync("http://localhost:52663/api/Books");
+            HttpResponseMessage resp = await _client.GetAsync(booksUrl);
 
             resp.EnsureSuccessStatusCode();
             string json = await resp.Content.ReadAsStringAsync();
