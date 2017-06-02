@@ -9,6 +9,7 @@ namespace Simple_MVVM
     class TextConverter
     {
         private readonly Func<string, string> _convertion;
+
         public TextConverter(Func<string, string> convertion)
         {
             _convertion = convertion;

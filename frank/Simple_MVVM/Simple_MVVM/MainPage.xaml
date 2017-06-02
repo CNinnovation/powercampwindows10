@@ -5,9 +5,20 @@
     xmlns:local="using:Simple_MVVM"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:ViewModel="using:Simple_MVVM.ViewModel"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.DataContext>
+        <ViewModel:Presenter/>
+    </Page.DataContext>
 
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Height="360">
+            <TextBlock Foreground ="Blue" Margin="5,5,5,0">Text to Convert</TextBlock>
+            <TextBox x:Name="Input" Text="{Binding SomeText, UpdateSourceTrigger=PropertyChanged}" Margin="5"/>
+            <TextBlock Foreground ="Blue" Margin="5,5,5,0">History</TextBlock>
+            <ListBox ItemsSource="{Binding History}" Height="200" Margin="5" />
+            <Button Command="{Binding ConvertTextCommand}" Margin="5" Click="Button_Click">Convert</Button>
+        </StackPanel>
     </Grid>
 </Page>

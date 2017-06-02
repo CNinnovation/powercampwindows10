@@ -22,9 +22,17 @@ namespace Simple_MVVM
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        string s = String.Empty;
+
         public MainPage()
         {
             this.InitializeComponent();
+            this.DataContext = this;
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            s = Input.Text;
+            TextConverter txtc = new TextConverter(s => s.ToUpper());
         }
     }
 }

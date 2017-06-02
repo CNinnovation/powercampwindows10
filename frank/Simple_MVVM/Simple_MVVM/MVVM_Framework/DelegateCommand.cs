@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Simple_MVVM
 {
-    class DelegateCommand
+    class DelegateCommand : ICommand
     {
         private readonly Action _action;
 
